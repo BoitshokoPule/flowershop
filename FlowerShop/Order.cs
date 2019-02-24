@@ -12,8 +12,18 @@ namespace FlowerShop
 
         // should apply a 20% mark-up to each flower.
         public double Price {
+           
             get {
-                return 0;
+                this.flowers = new List<Flower>();
+                double totalCost = 0;
+                int i = 0;
+                while (i < flowers.Count)
+                {
+                    totalCost += flowers[i].Cost + flowers[i].Cost * 0.2;
+                    //cost of all the flowers pilus the 20% markup
+                    i++;
+                }
+                return totalCost;
             }
         }
 
