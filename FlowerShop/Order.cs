@@ -50,9 +50,11 @@ namespace FlowerShop
             throw new NotImplementedException();
         }
 
-        public void Deliver()
+        public void Deliver(IOrderDAO dao, IClient client, bool isDelivered = false)
         {
-            isDelivered();
+            Order ord = new Order(dao, client);
+            dao.SetDelivered(ord);
         }
+
     }
 }
