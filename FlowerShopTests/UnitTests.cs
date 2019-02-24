@@ -1,4 +1,5 @@
 using NUnit.Framework;
+using FlowerShop;
 
 namespace Tests
 {
@@ -10,6 +11,8 @@ namespace Tests
             var orderdao = Substitute.For<IOrderDAO>();
             var client = Substitute.For<IClient>();
             var isDiliver = Substitute.For<bool>();
+            //
+            
         }
 
         [Test]
@@ -20,7 +23,9 @@ namespace Tests
             //ACT
             order.Deliver();
             //ASSERT
-            orderdao.Received().SetDelivered(orderdao);
+            orderdao.Received().SetDelivered(order);
+            //Checking Orders Price
+
         }
     }
 }
