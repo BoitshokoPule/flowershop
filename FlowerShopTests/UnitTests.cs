@@ -1,5 +1,6 @@
 using NUnit.Framework;
 using FlowerShop;
+using NSubstitute;
 
 namespace Tests
 {
@@ -11,6 +12,7 @@ namespace Tests
             var orderdao = Substitute.For<IOrderDAO>();
             var client = Substitute.For<IClient>();
             var isDiliver = Substitute.For<bool>();
+            var flowr= Substitute.For<Flower>();
             //
             
         }
@@ -24,8 +26,18 @@ namespace Tests
             order.Deliver();
             //ASSERT
             orderdao.Received().SetDelivered(order);
-            //Checking Orders Price
 
+        }
+        [Test] //Checking Orders Price
+
+        public void Test2()
+        {
+            //ARRANGE
+            var order = new Order(orderdao, client, isDiliver);
+            //ACT
+            double pr= order.Price();
+            //ASSERT
+            Assert.AreEqual(pr, flowr.Cost);
         }
     }
 }
